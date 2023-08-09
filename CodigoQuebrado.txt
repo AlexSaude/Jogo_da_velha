@@ -1,109 +1,129 @@
-Algoritmo
+Algoritmo "Jogo_Velha"
+// Disciplina: [Linguagem e Lógica de programaçao] 
+// Data : 31/5/2023
+// Finalizado: 30/6/2023
 var
-i,xc,xl : inteiro
-l,f : logico
-s,x,xcl : caracter
-A11,A12,A13,A21,A22,A23,A31,A32,A33 : LITERAL
-
-Funcao Randomico(Num : inteiro) : Inteiro
-VAR
-     Ds : Inteiro
-Inicio
-ECO OFF
-Aleatorio on
-Aleatorio 1,3
-Leia(Ds)
-Aleatorio off
-Retorne Ds
-ECO ON
-Fimfuncao
+random1, contador, contador1 : inteiro
+s,fim : caracter
+A11,A12,A13,A21,A22,A23,A31,A32,A33 : caractere
 
 Procedimento Erro
 Var
-D : Literal
+D : caractere
 Inicio
 Escreval("Campo já está ocupado !!!")
+Escreval("Digite <enter> !!!")
 Leia(D)
-
 FimProcedimento
 
+Procedimento MaquinaJoga
+var
+random1:inteiro
+inicio
+aleatorio 1,9
+leia(random1)
+aleatorio off
 
-Procedimento Acha_O
-Var
-Inicio
-Enquanto f faca
-   xcl <- ""
-   i <- 3
-   xc <- i
-   xcl <- xcl + Numpcarac(i)
-   i <- 3
-   xl <- i
-   xcl <- xcl + Numpcarac(i)
+escolha random1
+   caso "random1" = 1
+     se A11 = "_" entao
+       A11 <- "O"
+       senao
+        erro
+        limpatela
+        MaquinaJoga
+        fimse
+     fimse
 
-   S <- xcl
-   x <- "O"
-
-   se S = "11" entao
-      se A11 = "_" entao
-         A11 <- X
-         f <- Falso
-      fimse
-   fimse
-   se S = "12" entao
+   caso "random1" = 2
       se A12 = "_" entao
-         A12 <- X
-         f <- Falso
+         A12 <- "O"
+        senao
+        erro
+        limpatela
+        MaquinaJoga
+        fimse
       fimse
-   fimse
-   se S = "13" entao
+
+   caso "random1" = 3
       se A13 = "_" entao
-         A13 <- X
-         f <- Falso
-      fimse
-   fimse
-   se S = "21" entao
+         A13 <- "O"
+         senao
+        erro
+        limpatela
+        MaquinaJoga
+        fimse
+     fimse
+
+   caso "random1" = 4
       se A21 = "_" entao
-         A21 <- X
-         f <- Falso
+         A21 <- "O"
+         senao
+        erro
+        limpatela
+        MaquinaJoga
+        fimse
       fimse
-   fimse
-   se S = "22" entao
+
+   caso "random1" = 5
       se A22 = "_" entao
-         A22 <- X
-         f <- Falso
+         A22 <- "O"
+        senao
+        erro
+        limpatela
+        MaquinaJoga
+        fimse
       fimse
-   fimse
-   se S = "23" entao
+
+   caso "random1" = 6
       se A23 = "_" entao
-         A23 <- X
-         f <- Falso
+         A23 <- "O"
+        senao
+        erro
+        limpatela
+        MaquinaJoga
+        fimse
       fimse
-   fimse
-   se S = "31" entao
+
+   caso "random1" = 7
       se A31 = "_" entao
-         A31 <- X
-         f <- Falso
+         A31 <- "O"
+        senao
+        erro
+        limpatela
+        MaquinaJoga
+        fimse
       fimse
-   fimse
-   se S = "32" entao
+
+   caso "random1" = 8
       se A32 = "_" entao
-         A32 <- X
-         f <- Falso
+         A32 <- "O"
+        senao
+        erro
+        limpatela
+        MaquinaJoga
+        fimse
       fimse
-   fimse
-   se S = "33" entao
+
+   caso "random1" = 9
       se A33 = "_" entao
-         A33 <- X
-         f <- Falso
-      fimse
-   fimse
-fimenquanto
+         A33 <- "O"
+        senao
+        erro
+        limpatela
+        MaquinaJoga
+        fimse
+     fimse
+
+fimescolha
 Fimprocedimento
+
 
 Procedimento Mostra_tela
 Var
 Inicio
-   limpatela
+s <- "fim"
+ //  limpatela
    Escreval(" Jogo da Velha em visualG ")
    Escreval(" ")
    Escreval(" ")
@@ -118,11 +138,14 @@ Inicio
    Escreval(" ")
    Escreval(" ")
    Escreva(" Digite a linha e coluna: ")
+   escreval(" ")
+   Escreval(" Ou digite a palavra 'fim' para encerrar. ")
 FimProcedimento
 
 inicio
-// Seção de Comandos
-l <- verdadeiro
+
+cronometro on
+
 A11 <- "_"
 A12 <- "_"
 A13 <- "_"
@@ -132,100 +155,146 @@ A23 <- "_"
 A31 <- "_"
 A32 <- "_"
 A33 <- "_"
-f <- Falso
-enquanto l faca
-   f <- (nao f)
-
-   Acha_O
+enquanto s <> "fim" faca
 
    Mostra_tela
-   
+
    Leia(s)
-   SE Compr(S) = 1 entao
-      se (S = "F") entao
-         l <- Falso
-         Interrompa
-      fimse
-   senao
-      SE Compr(S) = 2 entao
+    escreval(random1)
          se S = "11" entao
             se A11 = "_" entao
                A11 <- "X"
-            senao
+               MaquinaJoga
+               senao
                Erro
             fimse
          fimse
+
          se S = "12" entao
-            //            A12 <- "X"
             se A12 = "_" entao
                A12 <- "X"
+               MaquinaJoga
             senao
                Erro
             fimse
-
          fimse
+
          se S = "13" entao
-            //          A13 <- "X"
             se A13 = "_" entao
                A13 <- "X"
+               MaquinaJoga
             senao
                Erro
             fimse
          fimse
+
+
          se S = "21" entao
-            //          A21 <- "X"
             se A21 = "_" entao
                A21 <- "X"
+               MaquinaJoga
             senao
                Erro
             fimse
          fimse
+
+
          se S = "22" entao
-            //          A22 <- "X"
             se A22 = "_" entao
                A22 <- "X"
+               MaquinaJoga
             senao
                Erro
             fimse
          fimse
+
          se S = "23" entao
-            //          A23 <- "X"
             se A23 = "_" entao
                A23 <- "X"
+               MaquinaJoga
             senao
                Erro
             fimse
          fimse
+
          se S = "31" entao
-            //          A31 <- "X"
-            se A31 = "_" entao
+               se A31 = "_" entao
                A31 <- "X"
+               MaquinaJoga
             senao
                Erro
             fimse
          fimse
          se S = "32" entao
-            //          A32 <- "X"
-            se A32 = "_" entao
+            A32 <- "X"
+                se A32 = "_" entao
                A32 <- "X"
+               MaquinaJoga
             senao
                Erro
             fimse
          fimse
          se S = "33" entao
-            //          A33 <- "X"
             se A33 = "_" entao
                A33 <- "X"
+               MaquinaJoga
             senao
                Erro
             fimse
          fimse
-      fimse
-   Fimse
+         
+         se (contador = 4) e (contador1 = 5) entao
+         Mostra_tela
+         fimse
+
+
+         se ((A31 = "X") e (A32 = "X") e (A33 = "X"))ou((A31 = "O") e (A32 = "O") e (A33 = "O"))entao
+         Mostra_tela
+         fimse
+
+
+         se ((A21 = "X") e (A22 = "X") e (A23 = "X"))ou((A21 = "XO") e (A22 = "O") e (A23 = "O")) entao
+         Mostra_tela
+         fimse
+
+
+         se ((A11 = "X") e (A12 = "X") e (A13 = "X"))ou((A11 = "O") e (A12 = "O") e (A13 = "O"))entao
+         Mostra_tela
+         fimse
+
+         
+         se ((A11 = "X") e (A21 = "X") e (A31 = "X"))ou((A11 = "O") e (A21 = "O") e (A31 = "O"))entao
+         Mostra_tela
+         fimse
+
+
+         se ((A12 = "X") e (A22 = "X") e (A32 = "X"))ou((A12 = "O") e (A22 = "O") e (A32 = "O"))entao
+         Mostra_tela
+         fimse
+
+
+         se ((A13 = "X") e (A23 = "X") e (A33 = "X"))ou((A13 = "O") e (A23 = "O") e (A33 = "O"))entao
+         Mostra_tela
+         fimse
+
+
+         se ((A11 = "X") e (A22 = "X") e (A33 = "X"))ou((A11 = "O") e (A22 = "O") e (A33 = "O"))entao
+         Mostra_tela
+         fimse
+
+
+         se ((A13 = "X") e (A22 = "X") e (A31 = "X"))ou((A13 = "O") e (A22 = "O") e (A31 = "O"))entao
+         Mostra_tela
+         fimse
+
+
    Escreval(" ")
+   escreval(" ")
    Escreval(" ")
-   Escreval(" ")
-   Escreval(" escolha <Ann> ou <Bnn> ou <<F> para finalizar>")
+
 fimenquanto
+
+Escreval("Game Over")
+cronometro off
 
 fimalgoritmo
